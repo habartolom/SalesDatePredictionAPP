@@ -1,0 +1,131 @@
+.sales-date-prediction__container {
+    width: 80%;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sales-date-prediction__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.sales-date-prediction__search {
+    position: relative;
+    height: 50px;
+}
+
+.search__input {
+    border: none;
+    border-bottom: 1px solid;
+    height: 34px;
+    width: 600px;
+    font-size: 25px;
+}
+
+.search__input:focus {
+    outline: none;
+}
+
+.search__image {
+    border: none;
+    position: relative;
+    margin-left: -28px;
+    width: 28px;
+}
+
+.sales-date-prediction__table {}
+
+.table__header-row {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid;
+}
+
+.table__header-data {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.table__header-data__label {
+    margin: 5px;
+}
+
+.table__header-data__image {
+    width: 20px;
+    margin: 5px;
+}
+
+.table__data {
+    margin: 10px;
+}
+
+.table__data__first-column {
+    width: 22%;
+}
+
+.table__data__second-column {
+    width: 22%;
+}
+
+.table__data__third-column {
+    width: 22%;
+}
+
+.table__data__fourth-column {
+    width: 17%;
+    color: red;
+    font-weight: bold;
+}
+
+.table__data__fifth-column {
+    width: 17%;
+    color: green;
+    font-weight: bold;
+}
+
+.table__body__row {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid;
+}
+
+.table__button {
+    cursor: pointer;
+}
+
+.table__pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.pagination__label {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.pagination__select {
+    margin-left: 15px;
+    height: 25px;
+}
+
+.pagination__button {
+    margin-left: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.pagination__button__image {
+    width: 28px;
+}
+
+.pagination__button__inactive {
+    opacity: 0.5;
+    cursor: auto;
+}

@@ -1,0 +1,55 @@
+<div class="sales-date-prediction__container">
+    <div class="sales-date-prediction__header">
+        <h1>Customers</h1>
+        <div class="sales-date-prediction__search">
+            <input class="search__input" type="text" placeholder="Customer Name" [(ngModel)]="searchedName" (ngModelChange)="onSearchName()">
+            <img class="search__image" src="../../../../assets/icons/search_icon.png" alt="search">
+        </div>
+    </div>
+
+
+    <div class="sales-date-prediction__table">
+        <div class="table__header-row">
+            <div class="table__header-data table__data__first-column" (click)="onOrderChange(1)">
+                <span class="table__header-data__label">Customer Name</span>
+                <img class="table__header-data__image" *ngIf="sortColumn == 1 && orderingDirection == 0" src="../../../../assets/icons/arrow-up.png" alt="Ascending Order">
+                <img class="table__header-data__image" *ngIf="sortColumn == 1 && orderingDirection == 1" src="../../../../assets/icons/arrow-down.png" alt="Descending Order">
+            </div>
+            <div class="table__header-data table__data__second-column" (click)="onOrderChange(2)">
+                <span class="table__header-data__label">Last Order Date</span>
+                <img class="table__header-data__image" *ngIf="sortColumn == 2 && orderingDirection == 0" src="../../../../assets/icons/arrow-up.png" alt="Ascending Order">
+                <img class="table__header-data__image" *ngIf="sortColumn == 2 && orderingDirection == 1" src="../../../../assets/icons/arrow-down.png" alt="Descending Order">
+            </div>
+            <div class="table__header-data table__data__third-column" (click)="onOrderChange(3)">
+                <span class="table__header-data__label ">Next Predicted Order</span>
+                <img class="table__header-data__image " *ngIf="sortColumn==3 && orderingDirection==0 " src="../../../../assets/icons/arrow-up.png" alt="Ascending Order ">
+                <img class="table__header-data__image " *ngIf="sortColumn==3 && orderingDirection==1 " src="../../../../assets/icons/arrow-down.png" alt="Descending Order ">
+            </div>
+        </div>
+        <div class="table__body__row" *ngFor="let customer of customerOrderPredictions">
+            <div class="table__data table__data__first-column">{{customer.customerName}}</div>
+            <div class="table__data table__data__second-column">{{ customer.lastOrderDate | dateFormat }}</div>
+            <div class="table__data table__data__third-column">{{ customer.nextPredictedOrder | dateFormat }}</div>
+            <div class="table__data table__data__fourth-column"><span class="table__button" (click)="onViewOrdersButtonClick(customer)">VIEW ORDERS</span></div>
+            <div class="table__data table__data__fifth-column"><span class="table__button">NEW ORDER</span></div>
+        </div>
+    </div>
+
+    <div class="table__pagination">
+        <span class="pagination__label">Rows per page:</span>
+        <select class="pagination__select" [(ngModel)]="pageSize " (ngModelChange)="onPageSizeChange() ">
+          <option *ngFor="let option of pageSizeOptions " [ngValue]="option ">{{option}}</option>
+        </select>
+        <span class="pagination__label">
+            {{ totalCount > 0 ? (pageNumber - 1) * pageSize + 1 : 0 }} - {{ pageNumber * pageSize > totalCount ? totalCount : pageNumber * pageSize }} of {{ totalCount }}
+        </span>
+        <span class="pagination__button" [ngClass]="{'pagination__button__inactive': pageNumber == 1}" (click)="onPageChange(pageNumber - 1)">
+            <img class="pagination__button__image" src="../../../../assets/icons/navv_arrow_left_icon.png" alt="left navigation">
+        </span>
+        <span class="pagination__button" [ngClass]="{'pagination__button__inactive': pageNumber == pages}" (click)="onPageChange(pageNumber + 1)">
+            <img class="pagination__button__image" src="../../../../assets/icons/nav_arrow_right_icon.png" alt="right navigation">
+        </span>
+    </div>
+</div>
+
+<app-orders [customerId]=" selectedCustomerId" [title]="modalTitle" *ngIf="showDialog" (close)="closeModal()"></app-orders>

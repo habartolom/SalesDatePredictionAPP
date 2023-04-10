@@ -1,0 +1,139 @@
+.customer-orders__container {
+    width: 80%;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.customer-orders__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.table__header-row {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid;
+}
+
+.table__header-data {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.table__header-data__label {
+    margin: 5px;
+}
+
+.table__header-data__image {
+    width: 20px;
+    margin: 5px;
+}
+
+.table__data {
+    margin: 10px;
+}
+
+.table__data__first-column {
+    width: 10%;
+}
+
+.table__data__second-column {
+    width: 19%;
+}
+
+.table__data__third-column {
+    width: 19%;
+}
+
+.table__data__fourth-column {
+    width: 16%;
+}
+
+.table__data__fifth-column {
+    width: 16%;
+}
+
+.table__data__sixth-column {
+    width: 16%;
+}
+
+.table__body__row {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid;
+}
+
+.table__pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.pagination__label {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.pagination__select {
+    margin-left: 15px;
+    height: 25px;
+}
+
+.pagination__button {
+    margin-left: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.pagination__button__image {
+    width: 28px;
+}
+
+.pagination__button__inactive {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-close {
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+}

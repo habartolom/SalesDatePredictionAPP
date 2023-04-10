@@ -1,0 +1,76 @@
+<div class="modal-overlay" (click)="onClose()">
+    <div class="modal-content" (click)="onModalClick($event)">
+        <div class="modal-header">
+            <h3>{{ title }}</h3>
+            <button class="modal-close" (click)="onClose()">&times;</button>
+        </div>
+        <div class="modal-body">
+
+
+
+            <div class="customer-orders__container">
+
+                <div class="customer-orders__table">
+                    <div class="table__header-row">
+                        <div class="table__header-data table__data__first-column" (click)="onOrderChange(1)">
+                            <span class="table__header-data__label">Order ID</span>
+                            <img class="table__header-data__image" *ngIf="sortColumn == 1 && orderingDirection == 0" src="../../../../assets/icons/arrow-up.png" alt="Ascending Order">
+                            <img class="table__header-data__image" *ngIf="sortColumn == 1 && orderingDirection == 1" src="../../../../assets/icons/arrow-down.png" alt="Descending Order">
+                        </div>
+                        <div class="table__header-data table__data__second-column" (click)="onOrderChange(2)">
+                            <span class="table__header-data__label">Required Date</span>
+                            <img class="table__header-data__image" *ngIf="sortColumn == 2 && orderingDirection == 0" src="../../../../assets/icons/arrow-up.png" alt="Ascending Order">
+                            <img class="table__header-data__image" *ngIf="sortColumn == 2 && orderingDirection == 1" src="../../../../assets/icons/arrow-down.png" alt="Descending Order">
+                        </div>
+                        <div class="table__header-data table__data__third-column" (click)="onOrderChange(3)">
+                            <span class="table__header-data__label ">Shipped Date</span>
+                            <img class="table__header-data__image " *ngIf="sortColumn==3 && orderingDirection==0 " src="../../../../assets/icons/arrow-up.png" alt="Ascending Order ">
+                            <img class="table__header-data__image " *ngIf="sortColumn==3 && orderingDirection==1 " src="../../../../assets/icons/arrow-down.png" alt="Descending Order ">
+                        </div>
+                        <div class="table__header-data table__data__fourth-column" (click)="onOrderChange(4)">
+                            <span class="table__header-data__label ">Ship Name</span>
+                            <img class="table__header-data__image " *ngIf="sortColumn==4 && orderingDirection==0 " src="../../../../assets/icons/arrow-up.png" alt="Ascending Order ">
+                            <img class="table__header-data__image " *ngIf="sortColumn==4 && orderingDirection==1 " src="../../../../assets/icons/arrow-down.png" alt="Descending Order ">
+                        </div>
+                        <div class="table__header-data table__data__fifth-column" (click)="onOrderChange(5)">
+                            <span class="table__header-data__label ">Ship Address</span>
+                            <img class="table__header-data__image " *ngIf="sortColumn==5 && orderingDirection==0 " src="../../../../assets/icons/arrow-up.png" alt="Ascending Order ">
+                            <img class="table__header-data__image " *ngIf="sortColumn==5 && orderingDirection==1 " src="../../../../assets/icons/arrow-down.png" alt="Descending Order ">
+                        </div>
+                        <div class="table__header-data table__data__sixth-column" (click)="onOrderChange(6)">
+                            <span class="table__header-data__label ">Ship City</span>
+                            <img class="table__header-data__image " *ngIf="sortColumn==6 && orderingDirection==0 " src="../../../../assets/icons/arrow-up.png" alt="Ascending Order ">
+                            <img class="table__header-data__image " *ngIf="sortColumn==6 && orderingDirection==1 " src="../../../../assets/icons/arrow-down.png" alt="Descending Order ">
+                        </div>
+                    </div>
+                    <div class="table__body__row" *ngFor="let order of customerOrders">
+                        <div class="table__data table__data__first-column">{{ order.orderId }}</div>
+                        <div class="table__data table__data__second-column">{{ order.requiredDate | longDateFormat }}</div>
+                        <div class="table__data table__data__third-column">{{ order.shippedDate | longDateFormat }}</div>
+                        <div class="table__data table__data__fourth-column">{{ order.shipName }}</div>
+                        <div class="table__data table__data__fifth-column">{{ order.shipAddress }}</div>
+                        <div class="table__data table__data__sixth-column">{{ order.shipCity }}</div>
+                    </div>
+                </div>
+
+                <div class="table__pagination">
+                    <span class="pagination__label">Rows per page:</span>
+                    <select class="pagination__select" [(ngModel)]="pageSize " (ngModelChange)="onPageSizeChange() ">
+            <option *ngFor="let option of pageSizeOptions " [ngValue]="option ">{{option}}</option>
+        </select>
+                    <span class="pagination__label">
+            {{ totalCount > 0 ? (pageNumber - 1) * pageSize + 1 : 0 }} - {{ pageNumber * pageSize > totalCount ? totalCount : pageNumber * pageSize }} of {{ totalCount }}
+        </span>
+                    <span class="pagination__button" [ngClass]="{'pagination__button__inactive': pageNumber == 1}" (click)="onPageChange(pageNumber - 1)">
+            <img class="pagination__button__image" src="../../../../assets/icons/navv_arrow_left_icon.png" alt="left navigation">
+        </span>
+                    <span class="pagination__button" [ngClass]="{'pagination__button__inactive': pageNumber == pages}" (click)="onPageChange(pageNumber + 1)">
+            <img class="pagination__button__image" src="../../../../assets/icons/nav_arrow_right_icon.png" alt="right navigation">
+        </span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
